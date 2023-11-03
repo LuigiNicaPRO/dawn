@@ -4,10 +4,7 @@
   --alpha-link: 0.85;
   --alpha-badge-border: 0.1;
 }
-.FacetsWrapperDesktop { /*edited*/
-  position: sticky;
-  top: 0;
-}
+
 .product-card-wrapper .card,
 .contains-card--product {
   --border-radius: var(--product-card-corner-radius);
@@ -97,9 +94,10 @@ html.no-js .no-js-hidden {
 }
 
 .page-width {
-  max-width: var(--page-width);
-  margin: 0 auto;
-  padding: 0 1.5rem;
+  {% comment %} max-width: var(--page-width); {% endcomment %}
+  max-width: 100%;
+  margin: 0 1.5rem;
+  padding: 0 1rem;
 }
 
 body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
@@ -142,6 +140,11 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
   .page-width-tablet {
     padding: 0 5rem;
   }
+  .section-template--16414068670649__product-grid-padding {
+  padding-top: 2px !important;
+  padding-bottom: 2px;
+}
+  
 }
 
 @media screen and (min-width: 990px) {
@@ -309,7 +312,7 @@ h5,
 
 h1,
 .h1 {
-  font-size: calc(var(--font-heading-scale) * 3rem);
+  font-size: calc(var(--font-heading-scale) * 2rem);
 }
 
 @media only screen and (min-width: 750px) {
@@ -3502,3 +3505,4 @@ details-disclosure > details {
     --border-offset: 0px; /* Prevent the border from growing on buttons when this effect is on. */
   }
 }
+

@@ -1,3 +1,6 @@
+{{ 'optizen_style.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'optizen_js.js' | asset_url }}" defer="defer"></script>
+
 {{ 'template-collection.css' | asset_url | stylesheet_tag }}
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
@@ -27,6 +30,9 @@
 {%- endstyle -%}
 
 <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
+
+{% comment %} {% render 'collection-filters-custom' %} {% endcomment %}
+  
   {%- paginate collection.products by section.settings.products_per_page -%}
     {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
     {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
@@ -109,14 +115,27 @@
           %}
         </aside>
       {%- endif -%}
-
-      <div
-        class="product-grid-container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+      <button class="mobile_optizen" onclick="toggleSidebar()"> Advance Filters</button>
+      <div id="sidebar" class="sidebar">
+         <div class="close-btn_optizen">
+              <h2 class="heading_mobile_optizen">Advance Filters</h2>
+             <span class="close-btn" onclick="closeSidebar()">&times;</span>
+        </div>
+        {% render 'optizen_mobile' %}
+      </div>
+     <div class="collection_page_optizen">
+      
+      <div class="collection_page_optizen_side">
+        {% render 'optizen_filter' %}
+      </div>
+        <div
+        class="collection_page_optizen_pro product-grid-container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
         id="ProductGridContainer"
         {% if settings.animations_reveal_on_scroll %}
           data-cascade
         {% endif %}
       >
+       
         {%- if collection.products.size == 0 -%}
           <div class="collection collection--empty page-width" id="product-grid" data-id="{{ section.id }}">
             <div class="loading-overlay gradient"></div>
@@ -176,12 +195,46 @@
         {%- endif -%}
       </div>
     </div>
+    </div>
   {%- endpaginate -%}
+{%comment%}optizenV2 ** Start ** {%endcomment%}
+ {% assign con_tent ='' %}
+{% if template contains 'collection' and current_tags %}
+{% assign tag_page_key = current_tags[0] | downcase | prepend: 'e_' %}
+{% assign show_page = collection.metafields.TagShowContent[tag_page_key] |strip %}
+{% assign tag_desc_key = current_tags[0]| downcase | prepend: 'g_' %}
+{% if show_page == 'all_pages' %}
+{% assign con_tent = collection.metafields.TagData[tag_desc_key] %}
+{% else %}
+{% if show_page == 'first_page_only' and current_page == 1 %}
+{% assign con_tent = collection.metafields.TagData[tag_desc_key] %}
+{% endif %}
+{% endif %}
+{% endif %}
+<div class='col_lower_main' style='width:100%'>
+<div class='inner_lower_main' style='max-width:1170px;margin:0px 39px;'>{{con_tent}}
+</div>
+</div>
+{%comment%}optizenV2 ** End ** {%endcomment%}
+  
   {% if section.settings.image_shape == 'arch' %}
     {% render 'mask-arch' %}
   {%- endif -%}
 </div>
+<script>
+      function toggleSidebar() {
+        var sidebar = document.getElementById("sidebar");
+        if (sidebar.style.width === "300px") {
+          sidebar.style.width = "0";
+        } else {
+          sidebar.style.width = "300px";
+        }
+      }
 
+      function closeSidebar() {
+        document.getElementById("sidebar").style.width = "0";
+      }
+    </script>
 {% schema %}
 {
   "name": "t:sections.main-collection-product-grid.name",

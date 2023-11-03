@@ -14,12 +14,42 @@
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
+    
+ {%comment%}optizenV2 ** Start ** {%endcomment%}
+    {% if template contains 'collection' and current_tags %}
+    {% assign index = shop.metafields.AllTagsIndex.all_tags_index |strip %}
+    {% if index == 'index' %}
+    {% assign indexing = 'index, follow' %}
+    {% else %}
+    {% assign indexing = 'noindex, nofollow' %}
+    {% endif %}
+    {% assign tag_index_key = current_tags[0] | downcase | prepend: 'f_' %}
+    {% assign checkIndex = collection.metafields.TagIndex[tag_index_key] |strip %}
+    {% if checkIndex == 'index' %}
+    {% assign indexing = 'index, follow' %}
+    {% else %}
+    {% assign indexing = 'noindex, nofollow' %}
+    {% endif %}
+    <meta name='robots' content='{{indexing}}'/>
+    {% endif %}
+    {%comment%}optizenV2 ** End ** {%endcomment%}
+    
+    {%comment%}optizenV2 ** Start ** {%endcomment%}
+    {% if template contains 'collection' and current_tags %}
+    {% assign tag_seo_title_key = current_tags[0] | downcase | prepend: 'a_' %}
+    {% assign tag_seo_desc_key = current_tags[0] | downcase | prepend: 'c_' %}
+    {% assign page_description = collection.metafields.TagSeoDesc[tag_seo_desc_key] |
+    strip_html %}{% assign page_title = collection.metafields.TagSeoTitleData[tag_seo_title_key] %}
+    {% if page_title == nill %}
+    {% assign page_title = collection.title %}
+    {% assign page_title = page_title |append:"" %}
+    {% assign page_title = page_title |append: current_tags[0]%}
+    {% endif %}
+    {% endif %}
+    {%comment%}optizenV2 ** End ** {%endcomment%}
 
     <title>
       {{ page_title }}
-      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
     </title>
 
     {% if page_description %}
@@ -280,7 +310,14 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
+  <link rel="preload" href="{{ 'design-pack-styles.css' | asset_url }}" as="style">
+{{ 'design-pack-styles.css' | asset_url | stylesheet_tag }} 
+  {{ 'huk-megamenu.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'huk-megamenu.js' | asset_url }}" defer="defer"></script>
+    {% include 'huk-mega-menu-pro-cuscss' %}
+  {% include "huk-mega-menu-pro" %}
   </head>
+							
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
@@ -294,6 +331,11 @@
     {% sections 'header-group' %}
 
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+{% comment %} Breadcrumbs modif {% endcomment %} 
+{%- if settings.show_breadcrumb_nav -%}
+    {% render "breadcrumbs.liquid" %}
+{%- endif -%}
+      
       {{ content_for_layout }}
     </main>
 
@@ -365,7 +407,23 @@
   flex-direction: row;
 }
 </style>
-
+    
+{% comment %}  for button in description expandable {% endcomment %}
+     <script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+  </script>
     
   </body>
 </html>

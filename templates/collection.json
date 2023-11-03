@@ -1,19 +1,102 @@
 {
   "sections": {
-    "banner": {
-      "type": "main-collection-banner",
+    "c2cba021-4b07-4190-9627-3eb2c3dc91b4": {
+      "type": "image-banner",
+      "blocks": {
+        "template--16414068670649__c2cba021-4b07-4190-9627-3eb2c3dc91b4-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "{{ collection.title }}",
+            "heading_size": "h1"
+          }
+        },
+        "template--16414068670649__c2cba021-4b07-4190-9627-3eb2c3dc91b4-text-1": {
+          "type": "text",
+          "settings": {
+            "text": "Collection description",
+            "text_style": "body"
+          }
+        },
+        "template--16414068670649__c2cba021-4b07-4190-9627-3eb2c3dc91b4-buttons-1": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": true,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": [
+        "template--16414068670649__c2cba021-4b07-4190-9627-3eb2c3dc91b4-heading-1",
+        "template--16414068670649__c2cba021-4b07-4190-9627-3eb2c3dc91b4-text-1",
+        "template--16414068670649__c2cba021-4b07-4190-9627-3eb2c3dc91b4-buttons-1"
+      ],
       "disabled": true,
       "settings": {
-        "show_collection_description": true,
-        "show_collection_image": true,
-        "color_scheme": "background-1"
+        "image": "{{ collection.image }}",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "desktop_content_position": "middle-left",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "26780df4-55a0-455d-9468-e4908ac95d19": {
+      "type": "design_pack_-_link_menu_grid",
+      "blocks": {
+        "template--16414068670649__26780df4-55a0-455d-9468-e4908ac95d19-menu_item-4": {
+          "type": "menu_item",
+          "settings": {
+            "title": "Mens watches",
+            "link": "shopify:\/\/collections\/shop-all-mens-watches"
+          }
+        },
+        "template--16414068670649__26780df4-55a0-455d-9468-e4908ac95d19-menu_item-1": {
+          "type": "menu_item",
+          "repeater": "{{ collection.metafields.custom.collection_link.value }}",
+          "settings": {
+            "title": "{{ block.repeater.link_title.value }}",
+            "link": "{{ block.repeater.link_url.value }}"
+          }
+        }
+      },
+      "block_order": [
+        "template--16414068670649__26780df4-55a0-455d-9468-e4908ac95d19-menu_item-4",
+        "template--16414068670649__26780df4-55a0-455d-9468-e4908ac95d19-menu_item-1"
+      ],
+      "settings": {
+        "underline": false,
+        "text_size": 80,
+        "text_alignment": "center",
+        "link_color": "#11335e",
+        "link_hover_color": "#ffffff",
+        "link_hover_background_color": "linear-gradient(46deg, rgba(179, 230, 249, 1) 6%, rgba(130, 174, 230, 1) 79%)",
+        "background_color": "",
+        "inner_padding": 5,
+        "outer_margin": 0,
+        "custom_css": "",
+        "mobile_custom_css": "",
+        "override_theme_font": false,
+        "main_font": "sans-serif"
       }
     },
     "product-grid": {
       "type": "main-collection-product-grid",
+      "custom_css": [
+
+      ],
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
+        "color_scheme": "",
         "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -24,13 +107,110 @@
         "filter_type": "horizontal",
         "enable_sorting": true,
         "columns_mobile": "2",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 4,
+        "padding_bottom": 4
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "color_scheme": "background-1"
+      }
+    },
+    "169971230863c82a54": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "be445177-f208-423e-96c4-33cab667959d": {
+      "type": "design_pack_-_banner_image_-_simple-custom",
+      "blocks": {
+        "template--16414068670649__be445177-f208-423e-96c4-33cab667959d-small_text-1": {
+          "type": "small_text",
+          "settings": {
+            "small_text": ""
+          }
+        },
+        "template--16414068670649__be445177-f208-423e-96c4-33cab667959d-heading-1": {
+          "type": "heading",
+          "settings": {
+            "title": "",
+            "block_heading_color": "",
+            "block_heading_size": "",
+            "heading_level": "h2"
+          }
+        },
+        "template--16414068670649__be445177-f208-423e-96c4-33cab667959d-text-1": {
+          "type": "text",
+          "settings": {
+            "text": ""
+          }
+        },
+        "template--16414068670649__be445177-f208-423e-96c4-33cab667959d-spacer-1": {
+          "type": "spacer",
+          "settings": {
+            "size": 40
+          }
+        },
+        "template--16414068670649__be445177-f208-423e-96c4-33cab667959d-buttons-1": {
+          "type": "buttons",
+          "settings": {
+            "button_radius": 0,
+            "button_label_primary": "",
+            "link_primary": "",
+            "external_link_primary": false,
+            "button_label_color_primary": "#ffffff",
+            "button_background_color_primary": "rgba(0,0,0,0)",
+            "button_label_secondary": "",
+            "link_secondary": "",
+            "external_link_secondary": false,
+            "button_label_color_secondary": "#121212",
+            "button_background_color_secondary": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "template--16414068670649__be445177-f208-423e-96c4-33cab667959d-small_text-1",
+        "template--16414068670649__be445177-f208-423e-96c4-33cab667959d-heading-1",
+        "template--16414068670649__be445177-f208-423e-96c4-33cab667959d-text-1",
+        "template--16414068670649__be445177-f208-423e-96c4-33cab667959d-spacer-1",
+        "template--16414068670649__be445177-f208-423e-96c4-33cab667959d-buttons-1"
+      ],
+      "settings": {
+        "link": "",
+        "image_crop": "1200:600",
+        "mobile_background_image": "{{ collection.image }}",
+        "show_content_below": false,
+        "text_size": 100,
+        "text_alignment": "left",
+        "text_position": "left center",
+        "text_width": 650,
+        "text_color": "#ffffff",
+        "text_background_color": "linear-gradient(180deg, rgba(58, 58, 58, 0.5), rgba(0, 0, 0, 1) 100%)",
+        "image_overlay_color": "linear-gradient(180deg, rgba(251, 51, 166, 0), rgba(127, 72, 176, 0.4) 50%, rgba(48, 145, 211, 0.4) 71%, rgba(0, 0, 0, 0.8) 100%)",
+        "animation": "none",
+        "base_width": 95,
+        "max_base_width": "",
+        "max_width": "",
+        "outer_margin_top": 40,
+        "outer_margin_bottom": 40,
+        "custom_css": "",
+        "mobile_custom_css": "",
+        "override_theme_font": false,
+        "heading_font": "serif",
+        "main_font": "sans-serif"
       }
     }
   },
   "order": [
+    "c2cba021-4b07-4190-9627-3eb2c3dc91b4",
+    "26780df4-55a0-455d-9468-e4908ac95d19",
+    "product-grid",
     "banner",
-    "product-grid"
+    "169971230863c82a54",
+    "be445177-f208-423e-96c4-33cab667959d"
   ]
 }

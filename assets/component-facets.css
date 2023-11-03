@@ -1,10 +1,4 @@
-.FacetsWrapperDesktop { /*edited*/
-  position: sticky;
-  top: 0;
-}
-
 .facets-container {
-  display: grid;
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(2, auto);
   padding-top: 1rem;
@@ -1043,6 +1037,16 @@ input.mobile-facets__checkbox {
 @media screen and (min-width: 750px) {
   .facets-vertical {
     display: flex;
+  }
+
+  .facets-wrapper.page-width {
+    padding: 1 1rem;
+    margin: 0;
+    position: sticky;
+z-index: 1;
+    top: 87px;
+  /*  min-height: 54px;*/
+    background: rgba(255, 255, 255, 0.75);
   }
 
   .facets-wrap-vertical {

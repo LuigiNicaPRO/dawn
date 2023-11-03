@@ -8,7 +8,7 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Use coupon 20OFF And stay caught up on all drops, exclusive deals and more good stuff",
+            "text": "Use coupon 20OFF And stay caught up on all drops, exclusive deals and more good stuff (live maintenance right now))",
             "link": ""
           }
         },
@@ -41,7 +41,7 @@
         "menu": "main-menu",
         "menu_type_desktop": "mega",
         "sticky_header_type": "reduce-logo-size",
-        "show_line_separator": true,
+        "show_line_separator": false,
         "color_scheme": "accent-1",
         "menu_color_scheme": "background-1",
         "enable_country_selector": true,
@@ -58,16 +58,31 @@
 
       ],
       "settings": {
-        "custom_liquid": "",
+        "custom_liquid": "{% unless product.metafields.my_fields.collectionhero %}\n  <style>\n    #shopify-section-template--16414068703417__690e781a-b565-424b-8af0-45ea4defe269 {\n      display: none;\n    } \n  <\/style>\n{% endunless %}",
         "color_scheme": "",
         "padding_top": 0,
         "padding_bottom": 0
+      }
+    },
+    "8b604d90-0d79-48ec-b3a2-88ca8583ec9f": {
+      "type": "breadcrumbs",
+      "settings": {
+        "breadcrumbs_home_icon_bool": true,
+        "breadcrumb_delimeter": "angle_right",
+        "breadcrumb_type": "navigation_based",
+        "main_menu": "main-menu",
+        "swipable_breadcrumbs": true,
+        "breadcrumb_bg_color": "#fff",
+        "breadcrumb_text_color": "#465076",
+        "breadcrumb_accent_color_bool": false,
+        "breadcrumb_accent_color": "#4770db"
       }
     }
   },
   "order": [
     "announcement-bar",
     "header",
-    "bdea30fe-14aa-4c7d-af18-a1a5d7a9ff02"
+    "bdea30fe-14aa-4c7d-af18-a1a5d7a9ff02",
+    "8b604d90-0d79-48ec-b3a2-88ca8583ec9f"
   ]
 }

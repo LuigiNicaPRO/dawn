@@ -12,13 +12,66 @@
 <div class="collection-hero{% if section.settings.show_collection_image and collection.image %} collection-hero--with-image{% endif %} color-{{ section.settings.color_scheme }} gradient">
   <div class="collection-hero__inner page-width {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
     <div class="collection-hero__text-wrapper">
-      <h1 class="collection-hero__title">
+      <div class="collection-hero__title">
         <span class="visually-hidden">{{ 'sections.collection_template.title' | t }}: </span>
-        {{- collection.title | escape -}}
-      </h1>
-
+        {%comment%}optizenV2 ** Start ** {%endcomment%}
+        {% if template contains 'collection' and current_tags %}
+        {% assign tag_desc_key = current_tags[0] | downcase | prepend: 'd_' %}
+        {% assign optizenTitle = collection.metafields.TagTitleData[tag_desc_key] %}
+        {% if optizenTitle != blank %}
+        {{collection.metafields.TagTitleData[tag_desc_key]}}
+        {% else %}
+        {{ collection.title }}
+        {% endif %}
+        {% else %}
+        {{ collection.title }}
+        {% endif %}
+        {%comment%}optizenV2 ** End ** {%endcomment%}
+      </div>
+       <h2
+              class="banner__heading inline-richtext"
+              
+            >
+            {%comment%}optizenV2 ** Delete **    {{ block.settings.heading }} {%endcomment%}
+                       {%comment%}optizenV2 ** Start ** {%endcomment%}
+              {% if template contains 'collection' and current_tags %}
+              {% assign tag_desc_key = current_tags[0] | downcase | prepend: 'd_' %}
+              {% assign optizenTitle = collection.metafields.TagTitleData[tag_desc_key] %}
+              {% if optizenTitle != blank %}
+              {{collection.metafields.TagTitleData[tag_desc_key]}}
+              {% else %}
+              {{ collection.title }}
+              {% endif %}
+              {% else %}
+              {{ collection.title }}
+              {% endif %}
+              {%comment%}optizenV2 ** End ** {%endcomment%}
+            </h2>
       {%- if section.settings.show_collection_description -%}
-        <div class="collection-hero__description rte">{{ collection.description }}</div>
+        <div class="collection-hero__description rte">
+          {%comment%}optizenV2 ** Start ** {%endcomment%}
+          {% if template contains 'collection' and current_tags %}
+          {% assign tag_description_key = current_tags[0] | downcase | prepend: 'b_' %}
+          {% assign tag_description = collection.metafields.TagDescTitle[tag_description_key] %}
+          {% if tag_description != blank %}
+          {{tag_description}}
+          {% else %}
+          {{ collection.description }}
+          {% endif %}
+          {% else %}
+            <!--For Bellow the Content  -->
+         {% assign specific_page = collection.metafields.collectionlower.show_content |strip %}
+          {% if specific_page == 'all_pages' %}
+          {% assign con_tent = collection.metafields.collectionlower.lowerdata %}
+          {% else %}
+          {% if specific_page == 'first_page_only' and current_page == 1 %}
+          {% assign con_tent = collection.metafields.collectionlower.lowerdata %}
+            {{ con_tent }}
+          {% endif %}
+          {% endif %}
+          {% endif %}
+          {%comment%}optizenV2 ** End ** {%endcomment%}
+        </div>
       {%- endif -%}
     </div>
 
