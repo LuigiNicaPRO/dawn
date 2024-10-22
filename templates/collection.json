@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "c2cba021-4b07-4190-9627-3eb2c3dc91b4": {
@@ -56,7 +65,7 @@
           "type": "menu_item",
           "settings": {
             "title": "Mens watches",
-            "link": "shopify:\/\/collections\/mens-collections"
+            "link": "shopify://collections/mens-watches"
           }
         },
         "template--16414068670649__26780df4-55a0-455d-9468-e4908ac95d19-menu_item-1": {
